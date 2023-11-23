@@ -58,17 +58,18 @@ export default function Home() {
   return (
     <>
       <div className='w-full h-full'>
-        <div className='w-1/2 h-1/2 mx-auto border'>
-          <div className='flex justify-center my-3'>
+        <p className='text-center text-2xl my-4 font-bold'>🌷오늘의 운세🌷</p>
+        <div className='w-4/5 h-4/5 mx-auto border'>
+          <div className='flex justify-center my-3 mx-2'>
             <span className='basis-1/2 text-center'>성별 </span>
             <button className={`border basis-1/2 ${gender === 'm' ? 'bg-pink-300': "bg-white"}`}  onClick={()=>setGender("m")}>남자</button>
             <button className={`border basis-1/2 ${gender === 'f' ? 'bg-pink-300': "bg-white"}`} onClick={()=>setGender("f")}>여자</button>
           </div>
-          <div className='flex justify-between my-3'>
+          <div className='flex justify-between my-3 mx-2'>
             <span className='basis-1/3 text-center'>생년월일</span>
             <input type='text' onChange={birthChange} value={birthDate} placeholder='생년월일(8자리)' className="border basis-2/3 text-center"/>
           </div>
-          <div className='flex justify-center my-3'>
+          <div className='flex justify-center my-3 mx-2'>
             <span className='basis-1/3 text-center'>달</span>
             <select value={month} onChange={(e)=>setMonth(e.target.value)} className="border basis-2/3 text-center">
               <option value="1">양력</option>
@@ -76,7 +77,7 @@ export default function Home() {
               <option value="3">음력 윤달</option>
             </select>
           </div>
-          <div className='flex justify-center my-3'>
+          <div className='flex justify-center my-3 mx-2'>
             <span className='basis-1/3 text-center'>시간</span>
             <select value={time} onChange={(e)=>setTime(e.target.value)} className="border basis-2/3 text-center">
               <option value="">모름</option>
@@ -94,12 +95,12 @@ export default function Home() {
               <option value="11">21:30~23:29</option>
             </select>
           </div>
-          <button className='block border px-5 py-2  my-3 bg-pink-400 text-white mx-auto' onClick={fetchData}>확인</button>
+          <button className='block px-5 py-2 rounded-md my-3 shadow-sm bg-pink-400 text-white mx-auto' onClick={fetchData}>확인</button>
           {/* {resultData && resultData.day.title} */}
           {resulttoday && 
             (
               <>
-                <h2 className='text-center font-bold bg-pink-100 h-10 leading-10'>{resulttoday.title}</h2>
+                <h2 className='text-center font-bold h-10 leading-10'>{resulttoday.title}</h2>
                 <p className='text-lg'>
                   <FontAwesomeIcon icon={faCalendar} className='mr-1'/>{resulttoday.date}
                 </p>
@@ -107,7 +108,7 @@ export default function Home() {
                   {resulttoday.content.map((item, idx) => (
                     <div key={idx} onClick={()=>{setIsActive(idx); setCateGory(menuType[idx])}} className={`${isActive === idx ? "bg-pink-200 font-bold cursor-pointer text-center" : "bg-white border cursor-pointer  text-center"}`}>{item.name}
                      {/* <span>{item.desc}</span> */}
-                     {isActive === idx && <div className='basis-full'>{item.desc}</div>}
+                     {isActive === idx && <div className='basis-full bg-white py-3 text-center px-3'>🔑 {item.desc}</div>}
                      </div>
                   ))}
                 </div>
